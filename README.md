@@ -9,4 +9,4 @@ The live application can be seen [here](https://coronatest.ee).
 * Kristofer Turmen
 * Karl Kristjan Kalluste
 * Henrik Rank
-* Kristofer Turmen
+* Karel Nappus
