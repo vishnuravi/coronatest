@@ -1,0 +1,135 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": "arn:aws:iam::{{account_id}}:role/task-execution-corona",
+    "containerDefinitions": [
+        {
+            "dnsSearchDomains": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "secretOptions": null,
+                "options": {
+                    "awslogs-group": "/ecs/corona-api",
+                    "awslogs-region": "eu-central-1",
+                    "awslogs-stream-prefix": "corona-api-container"
+                }
+            },
+            "entryPoint": [
+                "npm",
+                "start"
+            ],
+            "portMappings": [
+                {
+                    "hostPort": 0,
+                    "protocol": "tcp",
+                    "containerPort": 3000
+                }
+            ],
+            "command": null,
+            "linuxParameters": null,
+            "cpu": 0,
+            "environment": [
+                {
+                    "name": "VIRTUAL_PORT",
+                    "value": "3000"
+                },
+                {
+                    "name": "NODE_ENV",
+                    "value": "production"
+                }
+            ],
+            "resourceRequirements": null,
+            "ulimits": null,
+            "dnsServers": null,
+            "mountPoints": [],
+            "workingDirectory": "/opt/app",
+            "secrets": [
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/application_url",
+                    "name": "APPLICATION_URL"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/api_url",
+                    "name": "AUDIENCE"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/db_host",
+                    "name": "DB_HOST"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/db_port",
+                    "name": "DB_PORT"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/db_username",
+                    "name": "DB_USERNAME"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/db_password",
+                    "name": "DB_PASSWORD"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/db_database",
+                    "name": "DB_DATABASE"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/jwt_secret",
+                    "name": "JWT_SECRET"
+                },
+                {
+                    "valueFrom": "arn:aws:ssm:eu-central-1:{{account_id}}:parameter/corona-api/session_secret",
+                    "name": "SESSION_SECRET"
+                }
+            ],
+            "dockerSecurityOptions": null,
+            "memory": 256,
+            "memoryReservation": null,
+            "volumesFrom": [],
+            "stopTimeout": null,
+            "image": "{{account_id}}.dkr.ecr.eu-central-1.amazonaws.com/corona-api:latest",
+            "startTimeout": null,
+            "firelensConfiguration": null,
+            "dependsOn": null,
+            "disableNetworking": null,
+            "interactive": null,
+            "healthCheck": null,
+            "essential": true,
+            "links": null,
+            "hostname": null,
+            "extraHosts": null,
+            "pseudoTerminal": null,
+            "user": null,
+            "readonlyRootFilesystem": null,
+            "dockerLabels": null,
+            "systemControls": null,
+            "privileged": null,
+            "name": "corona-api"
+        }
+    ],
+    "memory": null,
+    "taskRoleArn": "arn:aws:iam::{{account_id}}:role/corona-api",
+    "family": "corona-api",
+    "pidMode": null,
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "networkMode": "bridge",
+    "cpu": null,
+    "inferenceAccelerators": null,
+    "proxyConfiguration": null,
+    "volumes": [
+        {
+            "name": "docker",
+            "host": {
+                "sourcePath": "/var/run/docker.sock"
+            },
+            "dockerVolumeConfiguration": null
+        }
+    ],
+    "placementConstraints": [],
+    "tags": [
+        {
+            "key": "environment",
+            "value": "production"
+        }
+    ]
+}

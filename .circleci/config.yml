@@ -1,0 +1,30 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.2.0
+  aws-ecs: circleci/aws-ecs@0.0.11
+workflows:
+  version: 2
+  build-and-deploy-stg-dev:
+    jobs:
+    - aws-ecr/build-and-push-image:
+        name: build-and-push-stg-dev
+        account-url: AWS_ECR_ACCOUNT_URL
+        aws-access-key-id: AWS_ACCESS_KEY_ID
+        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+        workspace-root: /api
+        path: ./api
+        dockerfile: ./api/Dockerfile
+        region: AWS_REGION
+        repo: $AWS_ECR_REPO
+        tag: latest
+        extra-build-args: --build-arg node_env_var=production
+        filters:
+          branches:
+            only: stg-dev
+    - aws-ecs/deploy-service-update:
+        requires:
+        - build-and-push-stg-dev
+        aws-region: ${AWS_REGION}
+        family: "corona-api"
+        cluster-name: "corona-api"
+        service-name: "corona-api"

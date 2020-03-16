@@ -1,0 +1,150 @@
+<div class="view-wrapper">
+    <div class="symptoms-form">
+        <mat-vertical-stepper #stepper id="stepper">
+
+            <mat-step [stepControl]="intent">
+                <form [formGroup]="intent">
+                    <ng-template matStepLabel>{{'intent' | translate}}</ng-template>
+                    <h4>{{'for_whom' | translate}}</h4>
+                    <mat-radio-group formControlName="intent" required>
+                        <mat-radio-button class="example-radio-button" value="self">
+                            {{'self' | translate}}
+                        </mat-radio-button><br><br>
+                        <mat-radio-button class="example-radio-button" value="family">
+                            {{'family' | translate}}
+                        </mat-radio-button><br><br>
+                        <mat-radio-button class="example-radio-button" value="test">
+                            {{'testing' | translate}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="general">
+                <form [formGroup]="general">
+                    <ng-template matStepLabel>{{'sex_and_age' | translate}}</ng-template>
+                    <h4>{{'sex' | translate}}</h4>
+                    <mat-button-toggle-group formControlName="gender" required>
+                        <mat-button-toggle value="male">{{'male' | translate}}</mat-button-toggle>
+                        <mat-button-toggle value="female">{{'female' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <h4>{{'age' | translate}}</h4>
+                    <mat-form-field>
+                        <mat-label>{{'age' | translate}}</mat-label>
+                        <input type="tel" matInput placeholder="{{'enter_age' | translate}}" formControlName="age" required>
+                    </mat-form-field>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="travelling">
+                <form [formGroup]="travelling">
+                    <ng-template matStepLabel>{{'travelling' | translate}}</ng-template>
+                    <h4>{{'travelling_14_days' | translate}}</h4>
+                    <!-- <div class="column-wrapper">
+                        <div class="column">
+                            <p>{{'china' | translate}}</p>
+                            <p>{{'south_korea' | translate}}</p>
+                            <p>{{'singapore' | translate}}</p>
+                            <p>{{'iran' | translate}}</p>
+                            <p>{{'italy' | translate}}</p>
+                            <p>{{'france' | translate}}</p>
+                            <p>{{'germany' | translate}}</p>
+                        </div>
+                        <div class="column">
+                            <p>{{'spain' | translate}}</p>
+                            <p>{{'belgium' | translate}}</p>
+                            <p>{{'denmark' | translate}}</p>
+                            <p>{{'norway' | translate}}</p>
+                            <p>{{'sweden' | translate}}</p>
+                            <p>{{'egypt' | translate}}</p>
+                        </div>
+                    </div> -->
+                    <mat-button-toggle-group formControlName="high_risk_country" required>
+                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
+                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="exposure">
+                <form [formGroup]="exposure">
+                    <ng-template matStepLabel>{{'exposure' | translate}}</ng-template>
+                    <h4>{{'close_contact_14_days' | translate}}</h4>
+                    <p>{{'close_contact_information' | translate}}</p>
+                    <br>
+                    <a class="rand-link" target="_blank" [routerLink]="'/info'" [queryParams]="{'lang': localeService.locale}">{{ 'link_what_is_exposure' | translate }}</a>
+                    <br><br>
+                    <mat-button-toggle-group formControlName="exposure" required>
+                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
+                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="symptoms">
+                <form [formGroup]="symptoms">
+                    <ng-template matStepLabel>{{'symptoms' | translate}}</ng-template>
+                    <h4>{{'any_of_the_symptoms' | translate}}</h4>
+                    <p>{{'if_no_symptoms_continue' | translate}}</p>
+                    <br>
+                    <br>
+                    <div class="wrapper">
+                        <app-chip [$formControlName]="'fever'"></app-chip>
+                        <app-chip [$formControlName]="'shortness_of_breath'"></app-chip>
+                        <app-chip [$formControlName]="'cough'"></app-chip>
+<!--                        <app-chip [$formControlName]="'fatigue'"></app-chip>-->
+<!--                        <app-chip [$formControlName]="'headache'"></app-chip>-->
+<!--                        <app-chip [$formControlName]="'sputum_production'"></app-chip>-->
+<!--                        <app-chip [$formControlName]="'diarrhea'"></app-chip>-->
+<!--                        <app-chip [$formControlName]="'pneumonia'"></app-chip>-->
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step *ngIf="symptoms.get('fever').value" [stepControl]="symptomsPeriod">
+                <form [formGroup]="feverOptions">
+                    <ng-template matStepLabel>{{'fever' | translate}}</ng-template>
+                    <h4>{{'how_high_fever' | translate}}</h4>
+                    <mat-form-field>
+                        <mat-label>{{ 'temperature' | translate }} </mat-label>
+                        <input matInput formControlName="fever_temperature" required>
+                    </mat-form-field>
+                </form>
+            </mat-step>
+            <mat-step>
+                <form [formGroup]="location">
+                    <ng-template matStepLabel>{{'location' | translate}}</ng-template>
+                    <h4>{{'share_your_location_information' | translate}}</h4>
+                    <p>{{'share_location_explanation' | translate}}</p>
+                    <br>
+                    <mat-button-toggle-group formControlName="shareLocation" required>
+                        <mat-button-toggle value="true" (click)="getLocation()">{{'share' | translate}}</mat-button-toggle>
+                        <mat-button-toggle value="false">{{'no_do_not_share' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+
+        <div class="next-button-wrapper">
+            <button [disabled]="buttonDisabled || loading" [ngClass]="{'disabled': buttonDisabled || loading}"
+                    class="btn-next-button {{buttonClass}}" mat-button
+                    (click)="buttonMethod(stepper)">
+                <ng-container *ngIf="!loading">
+                    {{buttonText | translate}}
+                </ng-container>
+                <ng-container *ngIf="loading">
+                    <loading-ellipsis></loading-ellipsis>
+                </ng-container>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<div class="logos">
+    <!-- <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
+    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo"> -->
+
+    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
+    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
+</div>

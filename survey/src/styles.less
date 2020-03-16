@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #f7f7f7; }
+
+
+/** custom CSS as per your :required */
+// .mat-vertical-stepper-header {
+//     box-sizing: border-box;
+//     flex-direction: column-reverse !important;
+//     height: auto;
+//     padding: 24px;
+// }
+// .mat-vertical-stepper-header .mat-step-label {
+//     padding: 0px 0px 16px !important;
+// }
+// .mat-stepper-label-position-bottom .mat-vertical-stepper-header:not(:first-child)::before, ::ng-deep .mat-stepper-label-position-bottom .mat-vertical-stepper-header:not(:last-child)::after{
+//     top: 68px !important;
+// }
+
+@media only screen and (max-width: 500px) {
+    .mat-step {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mat-vertical-content-container {
+        flex-grow: 1;
+        overflow-y: scroll;
+    }
+
+    .mat-step.active {
+        height: 100%;
+
+        .mat-vertical-content-container {
+            max-height: calc(100% - 144px);
+        }
+    }
+
+    .mat-step:first-child.active {
+        .mat-vertical-content-container {
+            max-height: calc(100% - 72px);
+        }
+    }
+
+}
+
+@media only screen and (min-width: 501px) {
+    .mat-step {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mat-vertical-content-container {
+        flex-grow: 1;
+    }
+
+    .mat-step.active {
+        height: calc(550px - 144px);
+    }
+
+    .mat-step:first-child.active {
+        height: calc(550px - 72px);
+    }
+}
+
+
+h2 {
+    font-family: Roboto, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+p{
+    font-family: 'open-sans', sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+.chip {
+    cursor: pointer;
+}
+
+.landing mat-form-field {
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+// .mat-vertical-content-container {
+//     flex-grow: 1;
+// }

@@ -1,0 +1,10 @@
+<agm-map #map 
+[latitude]='latitude' 
+[longitude]='longitude' 
+[mapTypeId]='mapType'>
+<agm-marker 
+*ngFor="let marker of markers; let i = index"
+[latitude]="marker.lat"
+[longitude]="marker.lon"
+></agm-marker>
+</agm-map>

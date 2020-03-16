@@ -1,0 +1,29 @@
+<div class="results-page">
+    <div *ngIf="texts" class="content">
+        <h2 class="title">{{'result' | translate }}</h2>
+        <h3 class="message">{{texts['risk_message'] | translate }}</h3>
+        <p>{{texts['act_message'] | translate }}</p>
+        <div class="instructions">
+            <div class="item" *ngFor="let instruction of texts.instructions; let i = index" class="item">
+                <div class="bubble">{{ i + 1 }}</div>
+                <span [innerHTML]="instruction | translate"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-logos">
+        <!-- <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
+        <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo"> -->
+    
+        <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
+        <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
+    </div>
+</div>
+<div class="logos">
+    <!-- <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
+    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo"> -->
+
+    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
+    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
+</div>
+
