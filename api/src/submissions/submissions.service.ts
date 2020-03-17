@@ -65,7 +65,7 @@ export class SubmissionsService {
                 }
             }
             // *** LIGHT SYMPTOMS ***
-            // fever OR cough + risk
+            // fever or cough + risk
             else if (dto.high_risk_country === true || dto.exposure === true) {
                 return {
                     probability: 'HIGH',
@@ -74,7 +74,7 @@ export class SubmissionsService {
                     scenario: 'SCENARIO_3'
                 };
             }
-            // fever OR cough
+            // fever or cough
             else {
                 return {
                     probability: 'MEDIUM',

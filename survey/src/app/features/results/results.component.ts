@@ -18,14 +18,14 @@ export class ResultsComponent implements OnInit {
     scenarioTexts = {
         SCENARIO_1: [
             "healthy_person_does_not_need_quarantine",
+            "monitor_health_risk_group",
             "retake_test_when_sick",
-            "risk_group_contact_doctor_when_symptoms",
             "only_call_112_in_an_emergecny",
             "precautionary_measures_recommended"
         ],
         SCENARIO_2: [
             "quarantine_2_weeks",
-            "check_your_health",
+            "monitor_health_risk_group",
             "retake_test_when_sick",
             "only_call_112_in_an_emergecny"
         ],

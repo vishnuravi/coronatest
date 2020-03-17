@@ -238,6 +238,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             fever_temperature = fever_temperature.replace(',', '.');
             fever_temperature = +fever_temperature;
         }
+        this.loading = true;
         this.apiService
             .sendSurvey({
                 ...this.intent.value,
@@ -253,10 +254,12 @@ export class FormComponent implements OnInit, AfterViewInit {
             .then(res => {
                 console.log(res);
                 this.pageService.submissionResult = res['data'];
+                this.loading = false;
                 this.router.navigate(['/results']);
             })
             .catch(err => {
                 console.log(err);
+                this.loading = false;
                 alert('Something went wrong');
             });
     }
