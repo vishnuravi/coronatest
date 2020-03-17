@@ -118,6 +118,7 @@
     "proxyConfiguration": null,
     "volumes": [
         {
+            "efsVolumeConfiguration": null,
             "name": "docker",
             "host": {
                 "sourcePath": "/var/run/docker.sock"
@@ -126,10 +127,5 @@
         }
     ],
     "placementConstraints": [],
-    "tags": [
-        {
-            "key": "environment",
-            "value": "production"
-        }
-    ]
+    "tags": []
 }
