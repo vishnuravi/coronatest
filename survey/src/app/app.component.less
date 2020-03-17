@@ -1,15 +1,15 @@
 .view-container {
-    height: 100%;
     background-color: #f7f7f7;
 }
 
 @media only screen and (min-width: 501px) {
     .view-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
+        min-height: 100%;
         width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .view-wrapper {
@@ -24,5 +24,11 @@
         background: #FFFFFF;
         box-shadow: 0 8px 32px -10px rgba(0,0,0,0.13);
         border-radius: 3px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .view-container {
+        height: 100%;
     }
 }
