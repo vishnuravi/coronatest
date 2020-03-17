@@ -20,7 +20,7 @@ export class SubmissionsService {
         // Has high risk symptoms
         if (dto.symptoms.some(symptom => ['fever', 'cough', 'shortness_of_breath'].includes(symptom))) {
             
-            // *** HIGH SYMPTOMS ***
+            // *** SEVERE SYMPTOMS ***
             // fever > 39 & 1 extra symptom (not fever)
             if (dto.fever_temperature > 39 && 
                 dto.symptoms.some(
@@ -28,46 +28,45 @@ export class SubmissionsService {
                     .includes(symptom)
                 )
             ) {
-                // hospitalization
-                // scenario 1
                 return {
                     probability: 'SEVERE',
                     risk_message: 'high_risk_severe_symptoms_message',
                     act_message: 'how_to_act_health_board',
-                    scenario: 'SCENARIO_1'
+                    scenario: 'SCENARIO_5'
                 };
             } 
             // changes
             // *** MEDIUM SYMPTOMS ***
-            // fever > 38 & 1 extra symptom (not fever)
             else if (
-                dto.fever_temperature >= 38 &&
+                // fever > 38 & 1 extra symptom
+                (dto.fever_temperature >= 38 &&
                 dto.symptoms.some(
                     symptom => ['cough', 'shortness_of_breath']
                     .includes(symptom)
-                )
+                )) ||
+                // or shortness of breath
+                dto.symptoms.includes('shortness_of_breath')
             ) {
+                // medium symptoms + risk
                 if (dto.high_risk_country === true || dto.exposure === true) {
                     return {
                         probability: 'HIGH',
                         risk_message: 'high_risk_medium_symptoms_message',
                         act_message: 'how_to_act_health_board',
-                        scenario: 'SCENARIO_5'
+                        scenario: 'SCENARIO_4'
                     };
                 } else {
-                    // new scenario 
                     return {
                         probability: 'MEDIUM',
                         risk_message: 'medium_risk_medium_symptoms_message',
                         act_message: 'how_to_act_health_board',
-                        scenario: 'SCENARIO_3'
+                        scenario: 'SCENARIO_7'
                     };
                 }
             }
-            // fever <= 38, high risk level (visited risk country or exposure)
+            // *** LIGHT SYMPTOMS ***
+            // fever OR cough + risk
             else if (dto.high_risk_country === true || dto.exposure === true) {
-                // home care, peers need to check themselves
-                // scenario 3
                 return {
                     probability: 'HIGH',
                     risk_message: 'high_risk_light_symptoms_message',
@@ -75,23 +74,20 @@ export class SubmissionsService {
                     scenario: 'SCENARIO_3'
                 };
             }
-            // fever OR cough OR shortness_of_breath
+            // fever OR cough
             else {
-                // maybe a flu, not corona
                 return {
                     probability: 'MEDIUM',
                     risk_message: 'low_risk_light_symptoms_message',
                     act_message: 'how_to_act_health_board',
-                    scenario: 'SCENARIO_9'
+                    scenario: 'SCENARIO_6'
                 };
             }
         } 
-        // no high risk symptoms
+        // no symptoms
         else {
-            // came from high risk country
+            // risk factor
             if (dto.high_risk_country === true || dto.exposure === true) {
-                // home quarantine 
-                // scenario 2
                 return {
                     probability: 'HIGH',
                     risk_message: 'high_risk_no_symptoms_message',
@@ -101,12 +97,11 @@ export class SubmissionsService {
             } 
             // healthy? :)
             else {
-                // scenario 10
                 return {
                     probability: 'LOW',
                     risk_message: 'low_risk_message',
                     act_message: 'how_to_act_health_board',
-                    scenario: 'SCENARIO_10'
+                    scenario: 'SCENARIO_1'
                 };
             }
         }
