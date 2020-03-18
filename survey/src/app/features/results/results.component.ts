@@ -66,7 +66,7 @@ export class ResultsComponent implements OnInit {
     };
 
     constructor(
-        private pageService: PageService,
+        public pageService: PageService,
         public localeService: LocaleService
     ) {}
 

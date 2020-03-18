@@ -18,7 +18,7 @@
 	"travelling": "Reisimine",
 	"exposure": "Kokkupuude",
 	"symptoms": "Sümptomid",
-	"travelling_14_days": "Kas oled viimase kahe nädala jooksul viibinud mõnes välisriigis?",
+	"travelling_14_days": "Kas olete viimase kahe nädala jooksul viibinud mõnes välisriigis?",
 	"yes": "Jah",
 	"no": "Ei",
 	"close_contact_14_days": "Kas olete viimase kahe nädala jooksul olnud lähikontaktis kellegagi, kel on enne või pärast diagnoositud COVID-19 viirus?",
