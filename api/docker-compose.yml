@@ -1,0 +1,16 @@
+version: "2.0"
+services:
+  corona-api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - JWT_SECRET=secret
+      - SESSION_SECRET=secret
+      - DB_HOST=host.docker.internal
+      - DB_PORT=5432
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_DATABASE=corona
+      - DB_READ_REPLICA_HOST=host.docker.internal
+      - API_TOKEN=token
