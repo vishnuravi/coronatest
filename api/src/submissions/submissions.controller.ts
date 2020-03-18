@@ -1,6 +1,7 @@
-import { Controller, Post, Body, Session, Req } from '@nestjs/common';
+import { Controller, Post, Body, Session, Req, Get, UseGuards } from '@nestjs/common';
 import { CreateSubmissionDto } from './dto/createSubmission.dto';
 import { SubmissionsService } from './submissions.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('submissions')
 export class SubmissionsController {
@@ -12,4 +13,11 @@ export class SubmissionsController {
         const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         return await this.submissionsService.createSubmission(createSubmissionDto, sessionID, ipAddress);
     }
-}
+
+    @UseGuards(AuthGuard('headerapikey'))
+    @Get()
+    async getSubmissions(@Req() req): Promise<any> {
+        return await this.submissionsService.getSubmissions();
+    }
+
+}   

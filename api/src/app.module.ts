@@ -10,6 +10,7 @@ import configuration from './config/configuration';
 import { SequelizeModule } from '@nestjs/sequelize';
 
 import { SessionsModule } from './sessions/sessions.module';
+import { AuthModule } from './auth/auth.module';
 
 import Submission from './submissions/submission.model';
 
@@ -21,7 +22,8 @@ import Submission from './submissions/submission.model';
             load: [configuration],
             isGlobal: true
         }),
-        SessionsModule
+        SessionsModule,
+        AuthModule
     ],
     controllers: [AppController, SubmissionsController],
     providers: [AppService, SubmissionsService]

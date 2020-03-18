@@ -19,14 +19,11 @@ export class SubmissionsService {
     getScenario(dto) {
         // Has high risk symptoms
         if (dto.symptoms.some(symptom => ['fever', 'cough', 'shortness_of_breath'].includes(symptom))) {
-            
             // *** SEVERE SYMPTOMS ***
             // fever > 39 & 1 extra symptom (not fever)
-            if (dto.fever_temperature > 39 && 
-                dto.symptoms.some(
-                    symptom => ['cough', 'shortness_of_breath']
-                    .includes(symptom)
-                )
+            if (
+                dto.fever_temperature > 39 &&
+                dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom))
             ) {
                 return {
                     probability: 'SEVERE',
@@ -34,16 +31,13 @@ export class SubmissionsService {
                     act_message: 'how_to_act_health_board',
                     scenario: 'SCENARIO_5'
                 };
-            } 
+            }
             // changes
             // *** MEDIUM SYMPTOMS ***
             else if (
                 // fever > 38 & 1 extra symptom
                 (dto.fever_temperature >= 38 &&
-                dto.symptoms.some(
-                    symptom => ['cough', 'shortness_of_breath']
-                    .includes(symptom)
-                )) ||
+                    dto.symptoms.some(symptom => ['cough', 'shortness_of_breath'].includes(symptom))) ||
                 // or shortness of breath
                 dto.symptoms.includes('shortness_of_breath')
             ) {
@@ -83,7 +77,7 @@ export class SubmissionsService {
                     scenario: 'SCENARIO_6'
                 };
             }
-        } 
+        }
         // no symptoms
         else {
             // risk factor
@@ -94,7 +88,7 @@ export class SubmissionsService {
                     act_message: 'how_to_act_health_board',
                     scenario: 'SCENARIO_2'
                 };
-            } 
+            }
             // healthy? :)
             else {
                 return {
@@ -105,5 +99,13 @@ export class SubmissionsService {
                 };
             }
         }
+    }
+
+    async getSubmissions() {
+        return await this.submissionModel.findAll({
+            order: [
+                ['id', 'DESC']
+            ]
+        });
     }
 }

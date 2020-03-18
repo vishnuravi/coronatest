@@ -40,8 +40,8 @@ import ConnectSessionSequelize from 'connect-session-sequelize';
                             httpOnly: true
                         }
                     },
-                    exclude: [
-                        { path: 'docs', method: RequestMethod.GET }
+                    forRoutes: [
+                        { path: 'submissions', method: RequestMethod.POST }
                     ]
                 };
             }
