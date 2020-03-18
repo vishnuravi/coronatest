@@ -1,5 +1,56 @@
 <div class="view-container">
     <router-outlet></router-outlet>
+    <!-- <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a> -->
 </div>
+
+<div *ngIf="pageService.modals['authors'].opened" class="modal-container">
+    <div class="modal center">
+        <h3>
+            {{'app_authors_detailed' | translate}}
+        </h3>
+        <p class="people-list">
+            Montonio Finance<br>
+            Kristofer Turmen<br>
+            Karl Kristjan Kalluste<br>
+            Henrik Rank<br>
+            Karel Nappus<br>
+            Priit Tohver<br>
+            Irina Filippova<br>
+            Ingrid Rooda<br>
+            Taavi Annus<br>
+            Ott Velsberg<br>
+            Kertti Merimaa<br>
+            Eerik Hannus<br>
+            Andrius Matšenas<br>
+            Alvar Lumberg<br>
+            Janno Rasmus Dreger
+        </p>
+        <button
+            class="btn-close mat-button" mat-button
+            (click)="pageService.closeModal('authors')">
+            {{'close' | translate}}
+        </button>
+    </div>
+</div>
+
+<!-- <div *ngIf="pageService.modals['close_contact'].opened" class="modal-container">
+    <div class="modal">
+        <h3>{{ 'info_header' | translate }}</h3>
+        <ul>
+            <li>{{ 'info_1' | translate }}</li>
+            <li>{{ 'info_2' | translate }}</li>
+            <li>{{ 'info_3' | translate }}</li>
+            <li>{{ 'info_4' | translate }}</li>
+            <li>{{ 'info_5' | translate }}</li>
+            <li>{{ 'info_6' | translate }}</li>
+            <li>{{ 'info_7' | translate }}</li>
+        </ul>
+        <button
+            class="btn-close mat-button" mat-button
+            (click)="pageService.closeModal('close_contact')">
+            {{'close' | translate}}
+        </button>
+    </div>
+</div> -->
 
 <!-- <router-outlet></router-outlet> -->

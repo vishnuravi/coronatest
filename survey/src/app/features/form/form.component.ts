@@ -29,7 +29,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         private formBuilder: FormBuilder,
         private apiService: ApiService,
         private router: Router,
-        private pageService: PageService,
+        public pageService: PageService,
         public localeService: LocaleService
     ) {
 
@@ -267,4 +267,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     parseSymptomsToArray(symptoms: any) {
         return Object.keys(symptoms).filter(key => symptoms[key] === true);
     }
+
+
 }

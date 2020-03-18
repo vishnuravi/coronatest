@@ -46,7 +46,6 @@
 	"start": "Alusta",
 	"submit": "Saada",
 	"ip_address_consent": "Küsimustiku täitmisega nõustun minu IP-aadressi salvestamisega uuringu raames korduvalt täidetud küsimustike eristamiseks Terviseameti poolt. Infot ei kasutata Teie isiku tuvastamiseks.",
-	"": "",
 	"china": "Hiina",
 	"south_korea": "Lõuna-Korea",
 	"singapore": "Singapur",
@@ -109,5 +108,8 @@
 	"info_6": "Oled tervishoiutöötaja või muu isik, kes hooldab COVID-19 nakatunut, või COVID-19 haiguse proove käsitlev laboritöötaja ja sa pole kasutanud nõuetekohaseid isiklikke kaitsevahendeid või on kaitsevahendites esinenud defekte;",
 	"info_7": "Oled reisinud ühes lennukis kuni 3 meetri kaugusel COVID-19 nakkuskahtlasest või nakatunud isikust või oled olnud sama isiku sektsioonis töötav lennuteenindaja",
 	"high_risk_medium_symptoms_message": "Võite olla nakatunud COVID-19 viirusesse.",
-	"medium_risk_medium_symptoms_message": "Te pole reisinud COVID-19 riskipiirkonda ega teadaolevalt puutunud kokku COVID-19 nakatunuga, kuid teie sümptomid viitavad hingamisteede viirushaigusele, mis võib olla COVID-19."
+	"medium_risk_medium_symptoms_message": "Te pole reisinud COVID-19 riskipiirkonda ega teadaolevalt puutunud kokku COVID-19 nakatunuga, kuid teie sümptomid viitavad hingamisteede viirushaigusele, mis võib olla COVID-19.",
+	"app_authors": "Rakenduse autorid",
+	"app_authors_detailed": "Rakenduse loomisse panustasid:",
+	"close": "Sulge"
 }

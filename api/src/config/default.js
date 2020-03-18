@@ -6,6 +6,8 @@ module.exports = {
         port: "5432",
         username: "root",
         password: "root",
-        database: "corona"
-    }
+        database: "corona",
+        readReplicaHost: "localhost"
+    },
+    apiToken: "token"
 };
