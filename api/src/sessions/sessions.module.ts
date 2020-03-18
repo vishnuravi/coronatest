@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, RequestMethod } from '@nestjs/common';
 import { NestSessionOptions, SessionModule } from 'nestjs-session';
 import { ConfigService } from '@nestjs/config';
 import { Sequelize } from 'sequelize-typescript';
@@ -39,7 +39,10 @@ import ConnectSessionSequelize from 'connect-session-sequelize';
                             maxAge: 2592000000,
                             httpOnly: true
                         }
-                    }
+                    },
+                    exclude: [
+                        { path: 'docs', method: RequestMethod.GET }
+                    ]
                 };
             }
         })
