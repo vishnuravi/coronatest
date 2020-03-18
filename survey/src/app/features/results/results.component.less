@@ -21,18 +21,29 @@
     width: 100%;
     max-width: 600px;
     padding: 20px 15px 0 15px;
+    display: flex;
     position: relative;
+    flex-flow: row nowrap;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
 
     .logo {
-        max-height: 45px;
         width: auto;
+        max-height: 45px;
 
         &:first-child {
-            // border-right: 1px solid #ccc;
-            padding-right: 20px;
             margin-right: 20px;
+            padding-right: 20px;
+            // border-right: 1px solid #ccc;
         }
+    }
+
+    .authors {
+        color: #bbb;
+        cursor: pointer;
+        margin-left: auto;
+        text-decoration: underline;
     }
 }
 
