@@ -23,7 +23,6 @@
             "email": "info@montonio.com"
         }
     ],
-    "license": "AGPL-3.0-only",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
