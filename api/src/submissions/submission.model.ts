@@ -14,13 +14,6 @@ export default class Submission extends Model<Submission> {
     id: number;
 
     @Column({
-        type: DataType.UUID,
-        allowNull: false,
-        defaultValue: Sequelize.literal('uuid_generate_v4()')
-    })
-    uuid: string;
-
-    @Column({
         type: DataType.TEXT,
         allowNull: true
     })
