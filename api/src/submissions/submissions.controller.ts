@@ -10,7 +10,7 @@ export class SubmissionsController {
     @Post()
     async createSubmission(@Body() createSubmissionDto: CreateSubmissionDto, @Session() session, @Req() req): Promise<any> {
         const sessionID = req.sessionID;
-        const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        const ipAddress = req.headers['x-clientip'] || req.connection.remoteAddress;
         return await this.submissionsService.createSubmission(createSubmissionDto, sessionID, ipAddress);
     }
 
