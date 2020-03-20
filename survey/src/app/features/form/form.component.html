@@ -26,6 +26,7 @@
                     <mat-button-toggle-group formControlName="gender" required>
                         <mat-button-toggle value="male">{{'male' | translate}}</mat-button-toggle>
                         <mat-button-toggle value="female">{{'female' | translate}}</mat-button-toggle>
+                        <mat-button-toggle value="female">{{'other' | translate}}</mat-button-toggle>
                     </mat-button-toggle-group>
                     <h4>{{'age' | translate}}</h4>
                     <mat-form-field>
@@ -39,25 +40,6 @@
                 <form [formGroup]="travelling">
                     <ng-template matStepLabel>{{'travelling' | translate}}</ng-template>
                     <h4>{{'travelling_14_days' | translate}}</h4>
-                    <!-- <div class="column-wrapper">
-                        <div class="column">
-                            <p>{{'china' | translate}}</p>
-                            <p>{{'south_korea' | translate}}</p>
-                            <p>{{'singapore' | translate}}</p>
-                            <p>{{'iran' | translate}}</p>
-                            <p>{{'italy' | translate}}</p>
-                            <p>{{'france' | translate}}</p>
-                            <p>{{'germany' | translate}}</p>
-                        </div>
-                        <div class="column">
-                            <p>{{'spain' | translate}}</p>
-                            <p>{{'belgium' | translate}}</p>
-                            <p>{{'denmark' | translate}}</p>
-                            <p>{{'norway' | translate}}</p>
-                            <p>{{'sweden' | translate}}</p>
-                            <p>{{'egypt' | translate}}</p>
-                        </div>
-                    </div> -->
                     <mat-button-toggle-group formControlName="high_risk_country" required>
                         <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
                         <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
