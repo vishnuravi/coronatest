@@ -101,11 +101,16 @@ export class SubmissionsService {
         }
     }
 
-    async getSubmissions() {
+    async getSubmissions(query) {
+        let limit = query.limit || 500;
+        let offset = query.offset || 0;
+        
         return await this.submissionModel.findAll({
             order: [
                 ['id', 'DESC']
-            ]
+            ],
+            limit,
+            offset
         });
     }
 }
