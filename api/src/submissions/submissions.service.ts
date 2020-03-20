@@ -102,9 +102,9 @@ export class SubmissionsService {
     }
 
     async getSubmissions(query) {
-        let limit = query.limit || 500;
-        let offset = query.offset || 0;
-        
+        let limit = parseInt(query.limit, 10) || 500;
+        let offset = parseInt(query.offset, 10) || 0;
+
         return await this.submissionModel.findAll({
             order: [
                 ['id', 'DESC']

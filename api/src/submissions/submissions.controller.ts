@@ -2,6 +2,7 @@ import { Controller, Post, Body, Session, Req, Get, UseGuards, Query } from '@ne
 import { CreateSubmissionDto } from './dto/createSubmission.dto';
 import { SubmissionsService } from './submissions.service';
 import { AuthGuard } from '@nestjs/passport';
+import { GetSubmissionsDto } from './dto/getSubmissions.dto';
 
 @Controller('submissions')
 export class SubmissionsController {
@@ -16,7 +17,7 @@ export class SubmissionsController {
 
     @UseGuards(AuthGuard('headerapikey'))
     @Get()
-    async getSubmissions(@Req() req, @Query() query): Promise<any> {
+    async getSubmissions(@Req() req, @Query() query: GetSubmissionsDto): Promise<any> {
         return await this.submissionsService.getSubmissions(query);
     }
 
