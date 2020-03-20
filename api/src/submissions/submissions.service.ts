@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import Submission from './submission.model';
 import { CreateSubmissionDto } from './dto/createSubmission.dto';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class SubmissionsService {
@@ -104,10 +105,17 @@ export class SubmissionsService {
     async getSubmissions(query) {
         let limit = parseInt(query.limit, 10) || 500;
         let offset = parseInt(query.offset, 10) || 0;
+        let sortDirection = query.sort_direction || 'ASC';
+        let idGte = parseInt(query.id_greater_than_or_equal, 10) || 0;
 
         return await this.submissionModel.findAll({
+            where: {
+                id: {
+                    [Op.gte]: idGte
+                }
+            },
             order: [
-                ['id', 'DESC']
+                ['id', sortDirection]
             ],
             limit,
             offset
