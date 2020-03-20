@@ -13,8 +13,10 @@
     overflow-y: auto;
 
     .modal-wrapper {
+        margin: 1rem;
         display: flex;
-        min-height: 100%;
+        min-height: calc(100% - 2rem);
+        box-sizing: border-box;
         align-items: center;
         justify-content: center;
 
@@ -93,4 +95,10 @@
     .view-container {
         height: 100%;
     }
+}
+
+@media only screen and (max-width: 350px) {
+    // .modal-container .modal-wrapper .modal {
+    //     font-size: 11pt;
+    // }
 }
