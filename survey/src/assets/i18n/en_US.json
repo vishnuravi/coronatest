@@ -96,7 +96,7 @@
 	"please_note_not_medical_advice_2": "Please note that the information provided by this tool is provided solely for educational purposes and is not a qualified medical opinion. This information should not be considered advice or an opinion of a doctor or other health professional about your actual medical state, and you should see a doctor for any symptoms you may have. If you are experiencing a health emergency, you should call your local emergency number immediately to request emergency medical assistance.",
 	"no_do_not_share": "Don't share",
 	"share": "Share",
-	"share_location_explanation": "Location data is used by to detect possible outbreaks and direct resources. Your location won't be used to identify you.",
+	"share_location_explanation": "The Estonian Health Board can use your location data to detect possible outbreaks and to plan resources. Your location won't be used to identify you.",
 	"if_no_symptoms_continue": "If you are showing no symptoms press \"Next\"",
 	"link_what_is_exposure": "See here for a definition of close contact",
 	"info_header": "Close contact of a probable or confirmed case is defined as:",
