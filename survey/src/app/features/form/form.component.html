@@ -1,7 +1,6 @@
 <div class="view-wrapper">
     <div class="symptoms-form">
         <mat-vertical-stepper #stepper id="stepper">
-
             <mat-step [stepControl]="intent">
                 <form [formGroup]="intent">
                     <ng-template matStepLabel>{{'intent' | translate}}</ng-template>

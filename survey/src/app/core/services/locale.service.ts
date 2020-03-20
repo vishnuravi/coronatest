@@ -12,8 +12,8 @@ export class LocaleService {
     constructor(
         private translateService: TranslateService,
     ) {
-        this.changeLocale('et');
-        translateService.setDefaultLang('et')
+        this.changeLocale('en_US');
+        translateService.setDefaultLang('en_US')
     }
 
     translate(key = null, params = null) {
