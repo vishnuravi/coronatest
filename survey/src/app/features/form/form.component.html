@@ -26,7 +26,7 @@
                     <mat-button-toggle-group formControlName="gender" required>
                         <mat-button-toggle value="male">{{'male' | translate}}</mat-button-toggle>
                         <mat-button-toggle value="female">{{'female' | translate}}</mat-button-toggle>
-                        <mat-button-toggle value="female">{{'other' | translate}}</mat-button-toggle>
+                        <mat-button-toggle value="other">{{'other' | translate}}</mat-button-toggle>
                     </mat-button-toggle-group>
                     <h4>{{'age' | translate}}</h4>
                     <mat-form-field>
@@ -119,11 +119,5 @@
 </div>
 
 <div class="logos">
-    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/terviseamet_vapp_est_78px.png" alt="Terviseamet" class="logo">
-    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/terviseamet_vapp_eng_78px.png" alt="Health Board" class="logo">
-
-    <img *ngIf="localeService.locale != 'en_US'" src="assets/images/sotsmin_vapp_est_78px.png" alt="Sotsiaalministeerium" class="logo">
-    <img *ngIf="localeService.locale == 'en_US'" src="assets/images/sotsmin_vapp_eng_78px.png" alt="Ministry of Social Affairs" class="logo">
-
     <a (click)="pageService.openModal('authors');" class="authors">{{'app_authors' | translate}}</a>
 </div>
