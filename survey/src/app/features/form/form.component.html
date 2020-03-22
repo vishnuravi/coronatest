@@ -36,6 +36,18 @@
                 </form>
             </mat-step>
 
+            <mat-step [stepControl]="chronic_conditions">
+                <form [formGroup]="chronic_conditions">
+                    <ng-template matStepLabel>{{'chronic_conditions' | translate}}</ng-template>
+                    <h4>{{'do_you_have_any_chronic_conditions' | translate}}</h4>
+                    <p>{{'chronic_conditions_list' | translate}}</p><br>
+                    <mat-button-toggle-group formControlName="chronic_conditions" required>
+                        <mat-button-toggle [value]="true">{{'yes' | translate}}</mat-button-toggle>
+                        <mat-button-toggle [value]="false">{{'no' | translate}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </form>
+            </mat-step>
+
             <mat-step [stepControl]="travelling">
                 <form [formGroup]="travelling">
                     <ng-template matStepLabel>{{'travelling' | translate}}</ng-template>

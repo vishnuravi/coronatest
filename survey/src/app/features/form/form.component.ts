@@ -13,6 +13,7 @@ import {LocaleService} from 'src/app/core/services/locale.service';
 })
 export class FormComponent implements OnInit, AfterViewInit {
     intent: FormGroup;
+    chronic_conditions: FormGroup;
     location: FormGroup;
     general: FormGroup;
     travelling: FormGroup;
@@ -35,6 +36,10 @@ export class FormComponent implements OnInit, AfterViewInit {
 
         this.intent = this.formBuilder.group({
             intent: new FormControl(null, [Validators.required])
+        });
+
+        this.chronic_conditions = this.formBuilder.group({
+            chronic_conditions: new FormControl(null, [Validators.required])
         });
 
         this.location = this.formBuilder.group({
@@ -93,7 +98,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.scrollToSectionHook(0);
         this.symptoms.valueChanges.subscribe(e => {
             this.hasFever = !!this.symptoms.get('fever').value;
-            this.handleButtonUI(4)
+            this.handleButtonUI(5)
         })
     }
 
@@ -175,28 +180,35 @@ export class FormComponent implements OnInit, AfterViewInit {
                 };
             case 2:
                 return {
-                    form: this.travelling,
+                    form: this.chronic_conditions,
                     method: this.nextStep,
                     class: '',
                     text: 'next'
                 };
             case 3:
                 return {
-                    form: this.exposure,
+                    form: this.travelling,
                     method: this.nextStep,
                     class: '',
                     text: 'next'
                 };
             case 4:
                 return {
-                    form: this.symptoms,
+                    form: this.exposure,
                     method: this.nextStep,
                     class: '',
                     text: 'next'
                 };
             case 5:
-                return this.handleFeverOptions();
+                return {
+                    form: this.symptoms,
+                    method: this.nextStep,
+                    class: '',
+                    text: 'next'
+                };
             case 6:
+                return this.handleFeverOptions();
+            case 7:
                 return {
                     form: this.location,
                     method: this.submitForm,
@@ -242,6 +254,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.apiService
             .sendSurvey({
                 ...this.intent.value,
+                ...this.chronic_conditions.value,
                 gender: this.general.get('gender').value,
                 age: +this.general.get('age').value,
                 ...this.travelling.value,

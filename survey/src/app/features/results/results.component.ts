@@ -62,6 +62,18 @@ export class ResultsComponent implements OnInit {
             "check_your_health",
             "only_call_112_in_an_emergecny",
             "close_people_no_quarantine"
+        ],
+        SCENARIO_8: [
+            "call_your_gp_for_treatment",
+            "quarantine_2_weeks",
+            "only_call_112_in_an_emergecny",
+            "exposed_persons_stay_home"
+        ],
+        SCENARIO_9: [
+            "call_your_gp_for_treatment",
+            "quarantine_2_weeks",
+            "only_call_112_in_an_emergecny",
+            "close_people_no_quarantine"
         ]
     };
 
@@ -72,7 +84,6 @@ export class ResultsComponent implements OnInit {
 
     ngOnInit() {
         if (this.pageService.submissionResult) {
-            console.log(this.pageService.submissionResult);
             this.texts = {
                 message: this.probabilityTexts[
                     this.pageService.submissionResult.probability
