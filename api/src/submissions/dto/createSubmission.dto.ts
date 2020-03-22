@@ -17,7 +17,7 @@ export class CreateSubmissionDto {
     @IsNumber()
     @Min(0)
     @Max(200)
-    age: string;
+    age: number;
 
     @IsBoolean()
     high_risk_country: boolean;
@@ -32,7 +32,11 @@ export class CreateSubmissionDto {
     @Max(50)
     @IsNumber()
     @IsOptional()
-    fever_temperature: number
+    fever_temperature: number;
+
+    @IsBoolean()
+    @IsOptional()
+    chronic_conditions: boolean;
 
     @IsString() @IsOptional()
     email: string;
