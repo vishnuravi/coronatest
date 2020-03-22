@@ -9,23 +9,16 @@ export class SubmissionsService {
     constructor(@InjectModel(Submission) private readonly submissionModel: typeof Submission) {}
 
     async createSubmission(dto: CreateSubmissionDto, sessionID, IPAddress) {
-        let submission = await this.submissionModel.create({
-            ...dto,
-            session_id: sessionID || null,
-            ip_address: IPAddress || null
-        });
 
         // determine scenario
         let scenario = this.getScenario(dto);
 
-        // update submission
-        this.submissionModel.update({
+        await this.submissionModel.create({
+            ...dto,
+            session_id: sessionID || null,
+            ip_address: IPAddress || null,
             scenario: scenario.scenario,
             scenario_description: scenario.scenario_description
-        }, {
-            where: {
-                id: submission.id
-            }
         });
 
         delete scenario.scenario_description;
