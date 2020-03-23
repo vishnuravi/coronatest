@@ -18,4 +18,7 @@ COPY ./package.json /opt/app
 RUN npm install
 COPY . /opt/app
 
-ENTRYPOINT npm start
+COPY ./docker-entrypoint.sh /opt/app
+RUN chmod +x /opt/app/docker-entrypoint.sh
+
+ENTRYPOINT ["/opt/app/docker-entrypoint.sh"]

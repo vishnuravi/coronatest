@@ -5,49 +5,66 @@
 .modal-container {
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    display: flex;
+    height: 100%;
     position: fixed;
-    min-height: 100%;
     background: rgba(0, 0, 0, 0.13);
-    align-items: center;
-    justify-content: center;
+    overflow-y: auto;
 
-    .modal {
-        width: 100%;
-        padding: 40px;
-        max-width: 600px;
-        background: #ffffff;
+    .modal-wrapper {
+        margin: 1rem;
+        display: flex;
+        min-height: calc(100% - 2rem);
         box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
 
-        &.center {
-            text-align: center;
-        }
+        .modal {
+            width: 100%;
+            padding: 40px;
+            max-width: 600px;
+            background: #ffffff;
+            box-sizing: border-box;
+    
+            &.center {
+                text-align: center;
+            }
+    
+            h3 {
+                margin-top: 0;
+            }
+    
+            p {
+                margin: 20px 0;
+    
+                &.people-list {
+                    line-height: 18pt;
+                }
+            }
 
-        h3 {
-            margin-top: 0;
-        }
-
-        p {
-            margin: 20px 0;
-
-            &.people-list {
-                line-height: 18pt;
+            ul {
+                margin: 25px 0;
+                padding-left: 25px;
+            }
+    
+            .btn-close {
+                border-radius: 100px;
+                width: 100%;
+                color: white;
+                height: 42px;
+                background-color: #3f51b5;
+                font-size: 16px;
+                font-family: Roboto, sans-serif;
+                font-weight: 400;
+                max-width: 200px;
+                display: block;
+                margin: auto;
             }
         }
-
-        .btn-close {
-            border-radius: 100px;
-            width: 100%;
-            color: white;
-            height: 42px;
-            background-color: #3f51b5;
-            font-size: 16px;
-            font-family: Roboto, sans-serif;
-            font-weight: 400;
-            max-width: 200px;
-        }
     }
+
 }
 
 @media only screen and (min-width: 501px) {
@@ -79,4 +96,10 @@
     .view-container {
         height: 100%;
     }
+}
+
+@media only screen and (max-width: 350px) {
+    // .modal-container .modal-wrapper .modal {
+    //     font-size: 11pt;
+    // }
 }

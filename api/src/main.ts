@@ -17,7 +17,7 @@ async function bootstrap() {
     SwaggerModule.setup('docs', app, document);
 
     app.disable('x-powered-by');
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
+    app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
     app.enableCors({
         origin: true,
         credentials: true

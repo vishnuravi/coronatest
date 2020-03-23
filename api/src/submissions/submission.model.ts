@@ -68,6 +68,24 @@ export default class Submission extends Model<Submission> {
     symptoms_exist: boolean;
 
     @Column({
+        type: DataType.BOOLEAN,
+        allowNull: true
+    })
+    chronic_conditions: boolean;
+
+    @Column({
+        type: DataType.TEXT,
+        allowNull: true
+    })
+    scenario: string;
+
+    @Column({
+        type: DataType.TEXT,
+        allowNull: true
+    })
+    scenario_description: string;
+
+    @Column({
         type: DataType.TEXT,
         allowNull: true
     })

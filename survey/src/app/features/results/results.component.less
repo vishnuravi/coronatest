@@ -14,13 +14,19 @@
 
     p {
         margin-bottom: 20px;
+
+        &.footnote {
+            color: #aaa;
+            margin: 25px 0 0 0;
+            word-wrap: break-word;
+        }
     }
 }
 
 .logos, .mobile-logos {
     width: 100%;
     max-width: 600px;
-    padding: 20px 15px 0 15px;
+    padding: 20px 15px 15px 15px;
     display: flex;
     position: relative;
     flex-flow: row nowrap;
@@ -92,6 +98,12 @@
 
     .logos {
         display: none;
+    }
+
+    .results-page {
+        p.footnote {
+            margin: 25px 0 15px 0;
+        }
     }
 }
 
